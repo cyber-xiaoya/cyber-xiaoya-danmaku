@@ -4,6 +4,8 @@
 > 配套的数字人主仓库：[赛博小雅直播版](https://github.com/cyber-xiaoya/cyber-xiaoya-live)
 > 任何付费售卖均未经授权，欢迎举报（[Issue](https://github.com/cyber-xiaoya/cyber-xiaoya-danmaku/issues)）。
 
+> 👤 **作者：天工开帧** · [抖音](https://v.douyin.com/BgCJXnllitM/) · [哔哩哔哩](https://space.bilibili.com/11946287) · [YouTube](https://www.youtube.com/@jintaoyi) · [博客](https://www.19980303.xyz/)
+
 把四个平台的弹幕和礼物，清洗后统一转发给你自己的数字人桥（默认 `http://127.0.0.1:8795/api/danmaku`）。
 
 **它不是朗读器也不是数字人**——它只负责"把观众的声音搬进来"。发声和出画面由
@@ -121,3 +123,21 @@ copy config.example.json config.json
 ## 8. 关于倒卖
 
 本项目**代码免费、永久免费**。看到有人卖，请把链接发到 [Issue](https://github.com/cyber-xiaoya/cyber-xiaoya-danmaku/issues)。
+
+> ⚠️ **本项目没有官方 QQ 群、微信群，也不卖课、不卖安装服务。**
+> 任何以「官方答疑群」「内部版」「授权版」「代部署」名义收费的，都不是我，请直接拉黑。
+
+## 9. 关注作者
+
+赛博小雅是我（**天工开帧**）业余时间做的开源项目。想看她直播、催更、或者聊实现细节：
+
+| 平台 | 链接 |
+|---|---|
+| 🎵 抖音 | <https://v.douyin.com/BgCJXnllitM/> |
+| 📺 哔哩哔哩 | <https://space.bilibili.com/11946287> |
+| ▶️ YouTube | <https://www.youtube.com/@jintaoyi> |
+| ✖️ X / Twitter | <https://x.com/yijt1339303> |
+| 📝 博客 · 教程 | <https://www.19980303.xyz/> |
+| 💻 GitHub | <https://github.com/beiyege-01> |
+
+> 问题请优先提到 [Issue](https://github.com/cyber-xiaoya/cyber-xiaoya-danmaku/issues)（公开可查）；想直接看效果：抖音直播间搜「天工开帧」。
