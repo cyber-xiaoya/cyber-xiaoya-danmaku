@@ -1,0 +1,104 @@
+{
+  "douyin": {
+    "enabled": true,
+    "room_id": "",
+    "ws_base": "ws://127.0.0.1:1089",
+    "auto_start": true,
+    "debug": false
+  },
+  "bilibili": {
+    "enabled": true,
+    "room_id": "",
+    "cookie": "",
+    "combo_wait_ms": 1500,
+    "retry_sec": 15
+  },
+  "tts": {
+    "provider": "auto",
+    "bridge_base": "http://127.0.0.1:8765",
+    "sapi_voice": "",
+    "volume": 0.548,
+    "gap_seconds": 15,
+    "latest_only": true,
+    "min_interval_ms": 600,
+    "low_priority_min_interval_ms": 10000,
+    "max_queue": 8,
+    "timeout_sec": 60,
+    "output": "dh",
+    "dh_url": "http://127.0.0.1:8795",
+    "dh_min_interval_ms": 0,
+    "omnivoice_base": "http://127.0.0.1:9877"
+  },
+  "read": {
+    "comments": true,
+    "gifts": true,
+    "joins": false,
+    "follows": false,
+    "likes": false,
+    "guards": true,
+    "superchats": true,
+    "max_chars": 50,
+    "strip_emoji": true,
+    "dedupe_seconds": 10,
+    "announce_nick": false,
+    "block_users": [],
+    "block_words": [],
+    "gift_combo_wait_ms": 1800,
+    "templates": {
+      "comment": "{nick}说{content}",
+      "gift": [
+        "诶嘿，{nick}的{gift}，我收进小口袋啦，谢谢～",
+        "呜哇！{nick}送我{gift}，这是给我的吗？",
+        "好耶！{nick}的{gift}，我最喜欢啦",
+        "{nick}的{gift}，嘿嘿，我要藏起来不给你看",
+        "谢谢{nick}的{gift}，你怎么这么好呀",
+        "唔…{nick}又送我{gift}，那我就不客气啦",
+        "{nick}的{gift}到啦！我眼睛都亮了",
+        "哇！{nick}的{gift}，我要抱一下再谢谢你",
+        "诶呀，{nick}的{gift}，谢谢你，比心心",
+        "谢谢{nick}的{gift}，我记住你啦，明天还来哦",
+        "嘿嘿～{nick}的{gift}，我今天运气好好",
+        "谢谢你{nick}，你的{gift}我收好啦",
+        "{nick}的{gift}，我要摆在最亮的地方",
+        "谢谢{nick}的{gift}，你对我最好了"
+      ],
+      "join": "哈咯！{nick}来了呀",
+      "follow": "呀，{nick}关注主播了，啾咪",
+      "like": "感谢 {nick} 的点赞",
+      "guard": [
+        "{nick}给我开了{item}！呜哇，我要更努力播给你看",
+        "谢谢{nick}的{item}，诶嘿，我记住你啦",
+        "{nick}的{item}到手！我要开心一整天"
+      ],
+      "superchat": "感谢 {nick} 的醒目留言 {content}",
+      "gift_big": [
+        "{nick}一出手就是{gift}，我都傻掉啦，谢谢你",
+        "呜～{nick}的{gift}，谢谢你，我心跳好快",
+        "喂，{nick}的{gift}，你这样会把我宠坏的",
+        "哼，{nick}的{gift}，那我就收下啦（其实超开心）",
+        "{nick}的{gift}…我才没有很开心呢（才怪）"
+      ]
+    },
+    "vip_gifters": true,
+    "vip_gift_ttl_minutes": 60,
+    "vip_min_diamond": 2,
+    "abbr_nick": true,
+    "drop_words": [
+      "倒立",
+      "翻跟斗"
+    ],
+    "gift_big_min_diamond": 50,
+    "gift_big_on_combo": true,
+    "nick_fallback": [
+      "小可爱",
+      "宝子"
+    ]
+  },
+  "debug": false,
+  "wechat": {
+    "enabled": true,
+    "cdp_port": 9223,
+    "interval_ms": 1200,
+    "debug": false
+  }
+}

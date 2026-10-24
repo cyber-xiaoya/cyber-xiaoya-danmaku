@@ -1,0 +1,9 @@
+# 多平台弹幕朗读器 · 抖音采集服务专用配置(独立实例)
+# 端口 1089, 与旧项目(1088)完全隔离; Cookie 由 配置工具 从旧项目只读迁移
+port: "1089"
+unknown: false
+log:
+  level: info
+cookie:
+  use_stored: true
+  douyin: ""

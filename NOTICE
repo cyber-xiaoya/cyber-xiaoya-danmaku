@@ -1,0 +1,14 @@
+赛博小雅 · 弹幕采集器
+Copyright (C) 2026 天工开帧 / AI少女宇宙计划组
+
+本仓库的**源代码**以 GNU Affero General Public License v3.0（见 LICENSE）授权。
+
+以下内容不在 AGPL 授权范围内：
+  1. 项目名称「赛博小雅」、Logo 及相关标识
+  2. 作者私人的配置文件、Cookie、账号凭据
+  3. 第三方采集工具（如 douyinLive.exe）—— 其版权归各自作者，本项目只提供对接接口
+
+关于名称与标识：不得以本项目名义发布、售卖或推广修改版本，也不得暗示存在官方关联。
+
+官方唯一发布渠道：https://github.com/cyber-xiaoya/cyber-xiaoya-danmaku
+配套的数字人主仓库：https://github.com/cyber-xiaoya/cyber-xiaoya-live

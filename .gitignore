@@ -1,0 +1,24 @@
+# 凭据: 绝不入库
+config.json
+config.json.bak*
+bin/config.yaml
+*.cookie
+.env
+
+# 第三方采集器二进制(体积大, 且版权归上游)
+bin/*.exe
+bin/*.dll
+
+# 运行时
+logs/
+__pycache__/
+*.pyc
+*.log
+browser-profile/
+
+# 系统
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+.idea/
