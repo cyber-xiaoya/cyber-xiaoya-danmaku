@@ -85,6 +85,10 @@ class DouyinClient(threading.Thread):
         self.debug = bool(self.cfg.get("debug"))
         self.online: bool | None = None
         self._proc = None
+        # 2026-10-28: 上游静默自愈 —— 直播间开着但 3 分钟一条消息都没有,
+        # 就把 douyinLive 服务整个重启(实测"下播再开播"后它不会自己重新握手)。
+        self.stall_sec = int(self.cfg.get("stall_restart_sec", 180) or 0)
+        self._last_msg_ts = time.time()
 
     def start_service(self):
         try:
@@ -113,10 +117,37 @@ class DouyinClient(threading.Thread):
             from logutil import platform_log
             platform_log("抖音", "状态查询失败(服务可能仍在启动)", yellow=True)
 
+    def _room_is_live(self) -> bool:
+        """问采集服务: 这个房间现在是不是在播。查不到就当 False(别乱重启)。"""
+        try:
+            with urllib.request.urlopen(
+                    f"{self.http_base}/api/v1/rooms/{self.room_id}/status", timeout=5) as r:
+                j = json.loads(r.read().decode("utf-8"))
+            d = (j.get("data") or {}) if isinstance(j, dict) else {}
+            return bool(d.get("is_live"))
+        except Exception:
+            return False
+
+    def _kill_service(self) -> None:
+        """杀掉 douyinLive.exe(下一轮 run 会重新拉起)。"""
+        try:
+            subprocess.run(["taskkill", "/F", "/IM", "douyinLive.exe"],
+                           stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                           creationflags=CREATE_NO_WINDOW, timeout=10)
+        except Exception:
+            pass
+        time.sleep(1.5)
+
     def run(self):
         backoff = 3
         while not self.stop.is_set():
             try:
+                # 断流自愈后服务可能已被杀, 这里每轮先确保它在(端口通就秒返回)
+                try:
+                    ensure_service(self.http_base)
+                except SystemExit as e:
+                    from logutil import platform_log
+                    platform_log("抖音", f"服务未就绪: {e}", err=True)
                 self._session()
             except (WSClosed, WSClosedError) as e:
                 from logutil import platform_log
@@ -138,10 +169,22 @@ class DouyinClient(threading.Thread):
         try:
             from logutil import platform_log
             platform_log("抖音", f"弹幕流已连接 {url}", green=True)
+            self._last_msg_ts = time.time()
             while not self.stop.is_set():
                 try:
                     _op, payload = ws.recv_message(timeout=15)
+                    self._last_msg_ts = time.time()
                 except socket.timeout:
+                    # 未开播时服务端无推送, 静默等下一轮; 但"开着播却长时间零消息"
+                    # = 上游 WS 静默死掉(douyinLive 不重连), 需要重启它。
+                    if self.stall_sec and self._room_is_live():
+                        idle = time.time() - self._last_msg_ts
+                        if idle > self.stall_sec:
+                            from logutil import platform_log
+                            platform_log("抖音", f"⚠ {int(idle)}s 没有任何事件(直播中) → 重启采集服务",
+                                         yellow=True)
+                            self._kill_service()
+                            raise WSClosedError(f"上游静默 {int(idle)}s, 已重启采集服务")
                     continue  # 未开播时服务端无推送, 静默等下一轮
                 if _op != 1:  # 文本帧
                     continue
