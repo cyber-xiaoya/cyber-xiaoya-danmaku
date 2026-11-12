@@ -141,3 +141,41 @@ copy config.example.json config.json
 | 💻 GitHub | <https://github.com/beiyege-01> |
 
 > 问题请优先提到 [Issue](https://github.com/cyber-xiaoya/cyber-xiaoya-danmaku/issues)（公开可查）；想直接看效果：抖音直播间搜「天工开帧」。
+
+---
+
+## 10. 🤝 参与共建 · 贡献者
+
+这个仓库不大，但**每一个平台的接入、每一个断流 bug 都是别人帮着补的**。
+
+### 已并入 main 的社区贡献
+
+| 贡献者 | 贡献内容 | 状态 |
+|---|---|---|
+| [**@PyGuy2**](https://github.com/PyGuy2) | **开源版初始化**（配置脱敏、AGPL-3.0、README 全流程）；**抖音采集自愈**：直播中长时间零事件自动重启采集服务，修掉「下播再开播后静默断流」 | **main ✅** · 3 次提交 |
+
+### 可以一起做的事
+
+| 方向 | 具体能做什么 |
+|---|---|
+| **新平台** | 快手、Twitch、视频号增强（现在是 CDP + 登录态，能做稳最好） |
+| **自愈** | 更多断流场景（网络抖动、Cookie 失效、直播间切房）自动恢复 + 告警 |
+| **稳定性** | 抖音 `douyinLive` 起不来时的兜底、重连退避、心跳检测 |
+| **文档** | 英文 README、「三分钟接到数字人桥」视频教程 |
+| **配置** | 配置校验器（错在哪一行就报哪一行，别让新人猜） |
+| **问题反馈** | **把踩到的坑写成 Issue**（附日志 + 复现步骤）—— 比"跑不起来"有用一百倍 |
+
+### 怎么参与
+
+```
+① 先看 Issue 列表，避免重复
+② 小改动（文档、一处重连逻辑）→ 直接提 PR 到 main
+③ 新平台 / 大改动 → 先开 Issue 说方案，避免白写
+④ 提交前跑一遍：python -m compileall . 和 README 里的三步启动
+⑤ 依赖保持克制：标准库优先，第三方只允许 requests / websockets 这一级别
+```
+
+**许可证 AGPL-3.0**：提交的代码同许可发布，署名会留在 git 历史与上面这份名单里。
+
+> 如果漏了谁，[开个 Issue](https://github.com/cyber-xiaoya/cyber-xiaoya-danmaku/issues) 提醒我补上。
+
